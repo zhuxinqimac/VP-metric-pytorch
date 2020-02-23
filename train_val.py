@@ -8,7 +8,7 @@
 
 # --- File Name: train_val.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 04:21:18 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:22:09 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -61,7 +61,7 @@ def train(train_loader, model, criterion, optimizer, epoch, train_logger,
         forward_time.update(end_forwarding - start_forwarding)
 
         loss = criterion(output, target_var)
-        print('loss size:', loss.size())
+        # print('loss size:', loss.size())
 
         # measure accuracy and record loss
         prec1, prec5 = accuracy(output.data, target, topk=(1, 5))

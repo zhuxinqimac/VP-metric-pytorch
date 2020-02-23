@@ -8,7 +8,7 @@
 
 # --- File Name: main_vp.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 04:20:16 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:22:54 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -78,6 +78,7 @@ def main():
     train_logger = os.path.join(args.result_dir, 'train.log')
     val_logger = os.path.join(args.result_dir, 'val.log')
 
+    best_prec1 = 0
     for epoch in range(args.epochs):
         # adjust_learning_rate(optimizer, epoch, args.lr_steps)
 
