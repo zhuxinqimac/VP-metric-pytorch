@@ -8,7 +8,7 @@
 
 # --- File Name: train_val.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 04:22:09 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:23:32 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -138,7 +138,7 @@ def validate(val_loader, model, criterion, val_logger, epoch):
     model.eval()
 
     end = time.time()
-    for i, (inputs, target, _) in enumerate(val_loader):
+    for i, (inputs, target) in enumerate(val_loader):
         if i == 200:
             batch_time.reset()
             data_time.reset()
