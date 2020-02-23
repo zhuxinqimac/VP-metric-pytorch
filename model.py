@@ -8,7 +8,7 @@
 
 # --- File Name: model.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 04:12:50 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:14:53 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -66,21 +66,26 @@ class VarPred(nn.Module):
         x = self.conv0(x)
         x = self.bn0(x)
         x = self.relu0(x)
+        print('0', x.size())
 
         x = self.conv1(x)
         x = self.bn1(x)
         x = self.relu1(x)
         x = self.maxpool1(x)
+        print('1', x.size())
 
         x = self.conv2(x)
         x = self.bn2(x)
         x = self.relu2(x)
+        print('2', x.size())
 
         x = self.conv3(x)
         x = self.bn3(x)
         x = self.relu3(x)
+        print('3', x.size())
 
         x = self.global_avgpool(x)
         x = self.output(x)
+        print('out', x.size())
 
         return x
