@@ -8,7 +8,7 @@
 
 # --- File Name: train_val.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 04:23:32 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:26:05 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -38,8 +38,8 @@ def train(train_loader, model, criterion, optimizer, epoch, train_logger,
     np.random.seed()
     end = time.time()
     for i, (inputs, target) in enumerate(train_loader):
-        if i > 44:
-            break
+        # if i > 44:
+        # break
         # show_inputs_target(inputs, target, result_dir=args.result_dir)
         data_time.update(time.time() - end)
         target = target.cuda()
