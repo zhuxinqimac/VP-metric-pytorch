@@ -8,7 +8,7 @@
 
 # --- File Name: train_val.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 04:11:21 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:18:40 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -52,8 +52,8 @@ def train(train_loader, model, criterion, optimizer, epoch, train_logger,
         # compute output
         output = model(input_var)
 
-        print('output.size:', output.size())
-        pdb.set_trace()
+        # print('output.size:', output.size())
+        # pdb.set_trace()
 
         end_forwarding = time.time()
         forward_time.update(end_forwarding - start_forwarding)
@@ -145,8 +145,8 @@ def validate(val_loader, model, criterion, val_logger, epoch):
         data_time.update(time.time() - end)
         start_copy_gpu = time.time()
         target = target.cuda()
-        print('inputs.size:', inputs.size())
-        pdb.set_trace()
+        # print('inputs.size:', inputs.size())
+        # pdb.set_trace()
 
         input_var = torch.autograd.Variable(inputs, volatile=True).cuda()
         target_var = torch.autograd.Variable(target, volatile=True)
