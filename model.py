@@ -8,7 +8,7 @@
 
 # --- File Name: model.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 03:32:47 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:10:47 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -60,7 +60,7 @@ class VarPred(nn.Module):
 
     def forward(self, x):
         # x: [B, C, H, W]
-        x1, x2 = torch.split(x, 2, dim=3)
+        (x1, x2) = torch.split(x, 2, dim=3)
         x = torch.cat((x1, x2), dim=1)
         x = self.conv0(x)
         x = self.bn0(x)
