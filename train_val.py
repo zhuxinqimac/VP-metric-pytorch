@@ -8,7 +8,7 @@
 
 # --- File Name: train_val.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 02:58:53 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:11:21 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -38,14 +38,14 @@ def train(train_loader, model, criterion, optimizer, epoch, train_logger,
     np.random.seed()
     end = time.time()
     for i, (inputs, target) in enumerate(train_loader):
-        show_inputs_target(inputs, target, result_dir=args.result_dir)
+        # show_inputs_target(inputs, target, result_dir=args.result_dir)
         data_time.update(time.time() - end)
         target = target.cuda()
         input_var = torch.autograd.Variable(inputs).cuda()
         target_var = torch.autograd.Variable(target)
 
-        print('train input_var.size:', input_var.size())
-        pdb.set_trace()
+        # print('train input_var.size:', input_var.size())
+        # pdb.set_trace()
 
         start_forwarding = time.time()
 
