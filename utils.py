@@ -8,7 +8,7 @@
 
 # --- File Name: utils.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 03:50:29 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:25:01 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -59,11 +59,10 @@ def split_indices(data_dir):
 def save_checkpoint(state, is_best, result_dir, filename='tmp.pth.tar'):
     if is_best:
         print('Saving best checkpoint...')
-        best_name = 'model_best.pth.tar'
+        filename = 'model_best.pth.tar'
+        torch.save(state, os.path.join(result_dir, filename))
         with open(os.path.join(result_dir, 'best_epoch.txt'), 'a') as f:
             f.write('best epoch: ' + str(state['epoch']))
-        shutil.copyfile(os.path.join(result_dir, filename),
-                        os.path.join(result_dir, best_name))
     else:
         print('Saving checkpoint...')
         torch.save(state, os.path.join(result_dir, filename))
