@@ -8,7 +8,7 @@
 
 # --- File Name: pair_dataset.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 03:55:07 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:06:10 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -49,7 +49,7 @@ class PairDataset(data.Dataset):
         img_np = load_image(img_name)
         label = self.labels[idx]
         img_tensor = self.transform(img_np)
-        return img_tensor, np.argmax(label)
+        return img_tensor, np.argmax(np.abs(label))
 
     def __len__(self):
         return len(self.idx_list)
