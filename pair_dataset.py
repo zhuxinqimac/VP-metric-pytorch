@@ -8,7 +8,7 @@
 
 # --- File Name: pair_dataset.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 03:04:32 AEDT
+# --- Last Modified: Mon 24 Feb 2020 03:55:07 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -33,7 +33,7 @@ class PairDataset(data.Dataset):
     def __init__(self,
                  data_dir,
                  idx_list,
-                 image_tmpl='pair_%6d.jpg',
+                 image_tmpl='pair_{:06d}.jpg',
                  transform=None):
 
         self.data_dir = data_dir
@@ -45,7 +45,7 @@ class PairDataset(data.Dataset):
 
     def __getitem__(self, hyper_idx):
         idx = self.idx_list[hyper_idx]
-        img_name = os.path.join(self.data_dir, self.image_tmpl % idx)
+        img_name = os.path.join(self.data_dir, self.image_tmpl.format(idx))
         img_np = load_image(img_name)
         label = self.labels[idx]
         img_tensor = self.transform(img_np)

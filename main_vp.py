@@ -8,7 +8,7 @@
 
 # --- File Name: main_vp.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 02:52:29 AEDT
+# --- Last Modified: Mon 24 Feb 2020 03:54:56 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -58,7 +58,7 @@ def main():
     train_loader = torch.utils.data.DataLoader(PairDataset(
         args.data_dir,
         train_list,
-        image_tmpl='pair_%6d.jpg',
+        image_tmpl='pair_{:06d}.jpg',
         transform=transform),
                                                batch_size=args.batch_size,
                                                shuffle=True,
@@ -68,7 +68,7 @@ def main():
     test_loader = torch.utils.data.DataLoader(PairDataset(
         args.data_dir,
         test_list,
-        image_tmpl='pair_%6d.jpg',
+        image_tmpl='pair_{:06d}.jpg',
         transform=transform),
                                               batch_size=args.batch_size,
                                               shuffle=False,
