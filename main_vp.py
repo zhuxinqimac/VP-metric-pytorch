@@ -8,7 +8,7 @@
 
 # --- File Name: main_vp.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 03:54:56 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:20:16 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -102,7 +102,7 @@ def main():
                         filename='ep_' + str(epoch) + '_checkpoint.pth.tar')
 
         # evaluate on validation set
-        if (epoch + 1) % args.eval_freq == 0 or epoch == args.epochs - 1:
+        if (epoch + 1) % 1 == 0 or epoch == args.epochs - 1:
             prec1 = validate(test_loader,
                              model,
                              criterion,
