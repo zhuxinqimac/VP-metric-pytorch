@@ -8,7 +8,7 @@
 
 # --- File Name: utils.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 03:12:00 AEDT
+# --- Last Modified: Mon 24 Feb 2020 03:50:29 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -49,7 +49,8 @@ def split_indices(data_dir):
     label_file = os.path.join(data_dir, 'labels.npy')
     labels = np.load(label_file)
     n_data = labels.shape[0]
-    shuffled = np.random.shuffle(np.arange(n_data))
+    shuffled = np.arange(n_data)
+    np.random.shuffle(shuffled)
     test_list = shuffled[:n_data // 4]
     train_list = shuffled[n_data // 4:]
     return train_list, test_list
