@@ -8,7 +8,7 @@
 
 # --- File Name: model.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 04:14:53 AEDT
+# --- Last Modified: Mon 24 Feb 2020 04:15:38 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -85,6 +85,7 @@ class VarPred(nn.Module):
         print('3', x.size())
 
         x = self.global_avgpool(x)
+        print('4', x.size())
         x = self.output(x)
         print('out', x.size())
 
