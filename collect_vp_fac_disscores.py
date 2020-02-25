@@ -4,10 +4,13 @@ import argparse
 import glob
 import matplotlib.pyplot as plt
 
-def plot_relation(fac_accs, vp_accs, args):
+def plot_relation(fac_accs, vp_accs, config_names, args):
     if not os.path.exists(args.result_dir):
         os.makedirs(args.result_dir)
-    plt.plot(fac_accs, vp_accs, 'ro')
+    for i in range(len(fac_accs)):
+        plt.plot(fac_accs[i], vp_accs[i], 'ro')
+        # if fac_accs[i] < 0.8:
+        plt.text(fac_accs[i], vp_accs[i], config_names[i], fontsize=8)
     filename = 'fac_vp_factype_' + args.fac_dis_type + \
             '_vptype_' + args.vp_dis_type + \
             '_vpepoch_' + str(args.target_epoch) + '.jpg'
@@ -41,8 +44,9 @@ def get_all_val_line(data, target_epoch):
 
 def get_dis_scores(data_dir, args):
     fac_acc_txt = os.path.join(data_dir, 'acc.txt')
+    config_name = os.path.basename(data_dir)
     if not os.path.isfile(fac_acc_txt):
-        return None, None
+        return None, None, None
     data = readlines_of(fac_acc_txt)
     line = data[0] # only one line in this file
     if args.fac_dis_type == 'last':
@@ -71,7 +75,7 @@ def get_dis_scores(data_dir, args):
         val_lines = get_all_val_line(data, args.target_epoch)
         vp_accs = [float(val_line.strip().split()[3]) for val_line in val_lines]
         vp_acc = sum(vp_accs) / len(vp_accs)
-    return fac_acc, vp_acc
+    return fac_acc, vp_acc, config_name
 
 def main():
     parser = argparse.ArgumentParser(description='Collect metrics data.')
@@ -101,14 +105,16 @@ def main():
     data_dirs = glob.glob(os.path.join(args.target_dir, '64_*'))
     fac_accs = []
     vp_accs = []
+    config_names = []
     for data_dir in data_dirs:
-        fac_acc, vp_acc = get_dis_scores(data_dir, args)
+        fac_acc, vp_acc, config_name = get_dis_scores(data_dir, args)
         if fac_acc is None:
             continue
         fac_accs.append(fac_acc)
         vp_accs.append(vp_acc)
+        config_names.append(config_name)
 
-    plot_relation(fac_accs, vp_accs, args)
+    plot_relation(fac_accs, vp_accs, config_names, args)
 
 
 if __name__ == "__main__":
