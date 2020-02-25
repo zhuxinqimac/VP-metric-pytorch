@@ -8,7 +8,7 @@
 
 # --- File Name: model.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 04:18:18 AEDT
+# --- Last Modified: Tue 25 Feb 2020 16:29:52 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -30,8 +30,9 @@ def conv3x3(in_planes, out_planes, stride=1):
 
 
 class VarPred(nn.Module):
-    def __init__(self, in_channels, out_dim):
+    def __init__(self, in_channels, out_dim, input_mode):
         super(VarPred, self).__init__()
+        self.input_mode = input_mode
         self.conv0 = nn.Conv2d(in_channels,
                                64,
                                kernel_size=7,
@@ -62,7 +63,10 @@ class VarPred(nn.Module):
         # x: [B, C, H, W]
         _, _, _, w = x.size()
         x1, x2 = torch.split(x, w // 2, dim=3)
-        x = torch.cat((x1, x2), dim=1)
+        if self.input_mode == 'concat':
+            x = torch.cat((x1, x2), dim=1)
+        elif self.input_mode == 'diff':
+            x = x1 - x2
         x = self.conv0(x)
         x = self.bn0(x)
         x = self.relu0(x)

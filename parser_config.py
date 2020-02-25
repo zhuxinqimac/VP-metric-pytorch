@@ -8,7 +8,7 @@
 
 # --- File Name: parser.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 02:07:00 AEDT
+# --- Last Modified: Tue 25 Feb 2020 16:26:55 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -51,5 +51,10 @@ def init_parser():
                         help='Num epochs to train.',
                         type=int,
                         default=60)
+    parser.add_argument('--input_mode',
+                        help='Input mode for model.',
+                        type=str,
+                        default='concat',
+                        choices=['concat', 'diff'])
     parser.add_argument('--workers', help='Num workers.', type=int, default=4)
     return parser

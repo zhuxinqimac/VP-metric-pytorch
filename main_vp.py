@@ -8,7 +8,7 @@
 
 # --- File Name: main_vp.py
 # --- Creation Date: 24-02-2020
-# --- Last Modified: Mon 24 Feb 2020 04:22:54 AEDT
+# --- Last Modified: Tue 25 Feb 2020 16:25:15 AEDT
 # --- Author: Xinqi Zhu
 # .<.<.<.<.<.<.<.<.<.<.<.<.<.<.<.<
 """
@@ -39,7 +39,9 @@ def main():
     if not os.path.exists(args.result_dir):
         os.makedirs(args.result_dir)
 
-    model = VarPred(in_channels=args.in_channels, out_dim=args.out_dim)
+    model = VarPred(in_channels=args.in_channels,
+                    out_dim=args.out_dim,
+                    input_mode=args.input_mode)
 
     model.cuda()
     model = nn.DataParallel(model)
