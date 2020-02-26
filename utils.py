@@ -51,8 +51,8 @@ def split_indices(data_dir, test_ratio):
     n_data = labels.shape[0]
     shuffled = np.arange(n_data)
     np.random.shuffle(shuffled)
-    test_list = shuffled[:n_data * test_ratio]
-    train_list = shuffled[n_data * test_ratio:]
+    test_list = shuffled[:int(n_data * test_ratio)]
+    train_list = shuffled[int(n_data * test_ratio):]
     return train_list, test_list
 
 
