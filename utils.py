@@ -45,14 +45,14 @@ def worker_init_fn(worker_id):
     np.random.seed(np.random.get_state()[1][0] + worker_id)
 
 
-def split_indices(data_dir):
+def split_indices(data_dir, test_ratio):
     label_file = os.path.join(data_dir, 'labels.npy')
     labels = np.load(label_file)
     n_data = labels.shape[0]
     shuffled = np.arange(n_data)
     np.random.shuffle(shuffled)
-    test_list = shuffled[:n_data // 4]
-    train_list = shuffled[n_data // 4:]
+    test_list = shuffled[:n_data * test_ratio]
+    train_list = shuffled[n_data * test_ratio:]
     return train_list, test_list
 
 

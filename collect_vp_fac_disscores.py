@@ -57,6 +57,8 @@ def get_dis_scores(data_dir, args):
         raise ValueError('Not supported fac_dis_type: ' + args.fac_dis_type)
 
     vp_acc_txt = os.path.join(data_dir, 'pairs_train', 'val.log')
+    if not os.path.isfile(vp_acc_txt):
+        return None, None, None
     if args.vp_dis_type == 'best':
         vp_acc_bestepoch_txt = os.path.join(data_dir, 
                 'pairs_train', 'best_epoch.txt')

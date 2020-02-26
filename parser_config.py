@@ -56,5 +56,9 @@ def init_parser():
                         type=str,
                         default='concat',
                         choices=['concat', 'diff'])
+    parser.add_argument('--test_ratio',
+                        help='Test set ratio.',
+                        type=float,
+                        default=0.5)
     parser.add_argument('--workers', help='Num workers.', type=int, default=4)
     return parser

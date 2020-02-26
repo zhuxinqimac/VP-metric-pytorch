@@ -52,7 +52,7 @@ def main():
     optimizer = torch.optim.Adam(model.module.parameters(), lr=args.lr)
     criterion = nn.CrossEntropyLoss().cuda()
 
-    train_list, test_list = split_indices(args.data_dir)
+    train_list, test_list = split_indices(args.data_dir, args.test_ratio)
     transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
