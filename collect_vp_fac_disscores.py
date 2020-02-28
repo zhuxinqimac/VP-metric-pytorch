@@ -50,9 +50,15 @@ def get_dis_scores(data_dir, args):
     data = readlines_of(fac_acc_txt)
     line = data[0] # only one line in this file
     if args.fac_dis_type == 'last':
-        fac_acc = float(line.strip().split()[-3].split(';')[0])
+        if args.pretrained_fac:
+            fac_acc = float(line.strip().split(':')[-1])
+        else:
+            fac_acc = float(line.strip().split()[-3].split(';')[0])
     elif args.fac_dis_type == 'best':
-        fac_acc = float(line.strip().split()[-1].split(':')[1])
+        if args.pretrained_fac:
+            fac_acc = float(line.strip().split(':')[-1])
+        else:
+            fac_acc = float(line.strip().split()[-1].split(':')[1])
     else:
         raise ValueError('Not supported fac_dis_type: ' + args.fac_dis_type)
 
@@ -101,6 +107,9 @@ def main():
                         help='If vp_dis_type != best, '+
                         'which epoch to use. Starting with 0.',
                         type=int, default=60)
+    parser.add_argument('--pretrained_fac',
+                        help='If use pretrained fac disen score.', 
+                        action='store_true')
 
     args = parser.parse_args()
 
