@@ -10,6 +10,7 @@ This repository contains the independent code for VP-metric in [Learning Disenta
 ## Training
 Once you have a dataset of [(x1, x2) --> \delta z], you can use this code
 to train a simple ConvNet to do the evaluation.
+Remember to modify the --out_dim to fit the latent dimensions of your model.
 
 ```
 CUDA_VISIBLE_DEVICES=0 \
