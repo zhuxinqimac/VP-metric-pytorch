@@ -31,3 +31,13 @@ Then use:
 python get_best_score.py --target_dir /path/to/result-dir
 ```
 to obtain the VP score.
+
+## Citation
+```
+@inproceedings{VPdis_eccv20,
+author={Xinqi Zhu and Chang Xu and Dacheng Tao},
+title={Learning Disentangled Representations with Latent Variation Predictability},
+booktitle={ECCV},
+year={2020}
+}
+```
